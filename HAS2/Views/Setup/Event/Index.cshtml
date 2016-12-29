@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Event";
+    //Layout = "~/Views/Setup/Shared/_setupLayout.cshtml";    
+    Layout = null;
+}
+
+<div class="has-main-container" ng-controller="eventController">
+
+    <div class="has-toolbar">
+        @* generate toolbar dinamycally *@
+        <button class="button" ng-click="saveitem()">
+            <img src="~/CDN/Content/Images/Toolbar/save_16.png" alt="save" />
+        </button>
+        <a ng-click="saveitem()">Save Item</a>
+    </div>
+
+    <div class="has-loading" ng-show="isprocessing"><img src="~/CDN/Content/Images/ajax-loader.gif" alt="loading" /> Loading</div>
+
+    <div class="container has-container" ng-show="!isprocessing" ng-cloak>
+
+        <form novalidate>
+
+            <h2>{{item.EventCode}} - {{item.EventName}}</h2>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="has-section">
+                        <fieldset>
+                            <label for="NameOnReport">Name On Report</label><input type="text" name="NameOnReport" id="NameOnReport" ng-model="item.NameOnReport" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="NameOnScreen">Name On Screen</label><input type="text" name="NameOnScreen" id="NameOnScreen" ng-model="item.NameOnScreen" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="StartDate">Start Date</label><input type="date" name="StartDate" id="StartDate" ng-model="item.StartDate" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="EndDate">End Date</label><input type="date" name="EndDate" id="EndDate" ng-model="item.EndDate" required>
+                        </fieldset>
+                    </div>                    
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="has-section">
+                        <fieldset>
+                            <label for="QualificationsFinished">Qualifications Finished</label><input type="checkbox" name="QualificationsFinished" id="QualificationsFinished" ng-model="item.QualificationsFinished" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="SignatureRequired">Signature Required</label><input type="checkbox" name="SignatureRequired" id="SignatureRequired" ng-model="item.SignatureRequired" required>
+                        </fieldset>
+                        <fieldset>
+                            <label for="ColourMandatoryFields">Color Mandatory Fields</label><input type="color" name="ColourMandatoryFields" id="ColourMandatoryFields" ng-model="item.ColourMandatoryFields" required>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>            
+
+            @*<div class="row">
+                <div class="col-md-12">
+                    <div class="has-section">
+                        <fieldset>
+                            <label>Color Mandatory Fields</label><input type="color" name="ColourMandatoryFields" id="ColourMandatoryFields" ng-model="item.ColourMandatoryFields" required>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>*@           
+    </form>
+</div>

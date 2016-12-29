@@ -1,0 +1,20 @@
+﻿
+<div class="login" ng-controller="loginController">
+    <div class="site-container">
+        <div class="grid-container">
+            <form action="" method="post" class="form form-login" novalidate ng-submit="LoginUser()">
+                <div class="form-field">
+                    <label class="fontawesome-user" for="username"><i class="fa fa-user fa-1x"></i></label>                                            
+                    <input id="username" name="username" type="text" class="form-input" placeholder="Username" required ng-model="userdata.login">
+                </div>
+                <div class="form-field">
+                    <label class="fontawesome-lock" for="password"><i class="fa fa-lock fa-1x"></i></label>                        
+                    <input id="password" name="password" type="password" class="form-input" placeholder="Password" required ng-model="userdata.password">
+                </div>
+                <div class="form-field">                    
+                    <button type="button" ng-click="LoginUser()" ng-disabled="isprocessing">Login</button>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>

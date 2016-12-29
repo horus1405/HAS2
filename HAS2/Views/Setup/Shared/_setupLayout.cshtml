@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Setup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+    
+}
+
+
+
+<main class="container body-content">
+
+    <div class="navbar navbar-inverse navbar-fixed-top sub-menu">
+        <div class="container">
+            <div class="navbar-default">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Event", "index", "event")</li>                    
+                    <li>@Html.ActionLink("Basic Codes", "index", "basiccode")</li>
+                    <li>@Html.ActionLink("Currencies", "index", "currency")</li>*@
+
+                    <li><a ui-sref="setup.event">Event xxx</a></li>
+                    <li><a ui-sref="setup.basiccode">Basic Codes</a></li>
+                    <li><a ui-sref="setup.currency">Currencies</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+</main>

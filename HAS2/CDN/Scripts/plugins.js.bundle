@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <settings>
+    <!--Determines if the bundle file should be automatically optimized after creation/update.-->
+    <minify>true</minify>
+    <!--Determine whether to generate/re-generate this bundle on building the solution.-->
+    <runOnBuild>false</runOnBuild>
+    <!--Specifies a custom subfolder to save files to. By default, compiled output will be placed in the same folder and nested under the original file.-->
+    <outputDirectory />
+  </settings>
+  <!--The order of the <file> elements determines the order of the files in the bundle.-->
+  <files>
+    <!-- Angular -->
+    <file>/CDN/Scripts/angular/angular.js</file>
+    <file>/CDN/Scripts/angular/angular-animate.js</file>
+    <file>/CDN/Scripts/angular/angular-cookies.js</file>
+    <file>/CDN/Scripts/angular/angular-loader.js</file>
+    <file>/CDN/Scripts/angular/angular-message-format.js</file>
+    <file>/CDN/Scripts/angular/angular-messages.js</file>
+    <file>/CDN/Scripts/angular/angular-mocks.js</file>
+    <file>/CDN/Scripts/angular/angular-resource.js</file>    
+    <file>/CDN/Scripts/angular/angular-sanitize.js</file>    
+    <file>/CDN/Scripts/angular/angular-touch.js</file>
+
+    <file>/CDN/Scripts/angular/angular-ui-router.js</file>
+    
+    <!-- JQuery -->
+    <file>/CDN/Scripts/jquery/jquery-1.10.2.js</file>
+    <!-- Bootstrap -->
+    <file>/CDN/Scripts/bootstrap/bootstrap.js</file>
+    <!-- sweetalert -->
+    <file>/CDN/Scripts/sweetalert/sweetalert.js</file>
+  </files>
+</bundle>

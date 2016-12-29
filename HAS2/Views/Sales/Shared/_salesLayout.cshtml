@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Setup";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+
+
+
+<main class="container body-content">
+
+    <div class="navbar navbar-inverse navbar-fixed-top sub-menu">
+        <div class="container">
+            <div class="navbar-default">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="sales.account">Accounts</a></li>
+                    <li><a ui-sref="sales.contact">Contacts</a></li>
+                    <li><a ui-sref="sales.proposal">Proposals</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+</main>

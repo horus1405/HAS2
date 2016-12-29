@@ -1,0 +1,21 @@
+﻿<header class="navbar navbar-inverse navbar-fixed-top main-menu">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*@Html.ActionLink("Dashboard", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+            <a class="navbar-brand" ui-sref="dashboard">Dashboard</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="setup">Setup</a></li>
+                <li><a ui-sref="sales">Sales</a></li>
+                <li><a ui-sref="inventory">Inventory</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

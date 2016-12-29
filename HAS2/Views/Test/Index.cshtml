@@ -1,0 +1,35 @@
+﻿
+<style>
+    .dragable{
+        width:100px;
+        height:100px;
+        background-color: ActiveCaption;        
+        left:100px;
+        top:100px;        
+    }
+    .layout-container{
+        width:90%;
+        height:auto;
+        border:solid 1px #b0acac;        
+    }
+
+
+</style>
+
+<script>
+    function dragenter(item) {
+        item.style.borderColor = 'red';
+    }
+    function dragleave(item) {
+        item.style.borderColor = '#b0acac';
+        item.style.cursor = 'arrow';
+    }
+</script>
+
+<div class="dragable" draggable="true">
+    Drag me!
+</div>
+
+<div class="layout-container" ondragenter="dragenter(this)" ondragleave="dragleave(this)" dropzone="true" ondrop="">
+    lalala
+</div>

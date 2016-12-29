@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "Basic Codes";
+    Layout = "~/Views/Setup/Shared/_setupLayout.cshtml";
+    Layout = null;
+}
+
+<div class="has-main-container" ng-controller="basiccodelistController">
+
+    <div class="has-toolbar" ng-show="detailview && !isprocessing && !edititem">
+        @* generate toolbar dinamycally *@
+        <button class="button" ng-click="addvalue()">
+            <img src="~/CDN/Content/Images/Toolbar/save_16.png" alt="save" /> Add Value
+        </button>
+        <button class="button" ng-click="saveitem()">
+            <img src="~/CDN/Content/Images/Toolbar/save_16.png" alt="save" /> Save Item
+        </button>
+    </div>
+
+    <div class="has-loading" ng-show="isprocessing"><img src="~/CDN/Content/Images/ajax-loader.gif" alt="loading" /> Loading</div>
+
+    @*Basic Code Types List Section*@
+    <div class="has-container" ng-show="listview && !isprocessing" ng-cloak>
+
+        <h2>@ViewBag.Title</h2>
+
+        <div class="has-section-2">
+            <label form="searchfilterslist.Name">Name</label>
+            <input type="text" name="searchfilterslist.Name" id="searchfilterslist.Name" ng-model="searchfilterslist.Name" />
+        </div>
+
+        <div class="has-section-2">
+
+            <table class="table table-striped table-condensed table-hover has-list">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                <tbody>
+                    <tr ng-repeat="t in codeTypes | filter:searchfilterslist" class="has-list-row" ng-click="showdetail(t)">
+                        <td>{{t.ID}}</td>
+                        <td>{{t.Name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    @*Basic Codes Section*@
+    <div class="has-container" ng-cloak ng-show="detailview && !isprocessing && !edititem">
+
+        <div class="has-container">
+
+            <h2>{{detailitem.TableId}} - {{detailitem.TableName}}</h2>
+
+            <div class="has-section-2">
+                <fieldset>
+                    <label form="searchfilters.ValueName">Name</label>
+                    <input type="text" name="searchfilters.ValueName" id="searchfilters.ValueName" ng-model="searchfilters.ValueName" />
+                </fieldset>
+                <fieldset>
+                    <label form="searchfilters.IsDeleted">Display Deleted Items</label>
+                    <input type="checkbox" name="searchfilters.IsDeleted" id="searchfilters.IsDeleted" ng-model="searchfilters.IsDeleted" />
+                </fieldset>
+            </div>
+
+            <div class="has-section-2">
+
+                <table class="table table-striped table-condensed table-hover has-list">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>{{detailitem.Label1}}</th>
+                            <th>{{detailitem.Label2}}</th>
+                            <th>{{detailitem.Label3}}</th>
+                            <th>{{detailitem.Label4}}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr ng-repeat="c in detailitem.Values | filter:searchfilters" class="has-list-row" ng-class="{'has-list-row-deleted':c.HasChanges==3, 'has-list-row-isdeleted':c.IsDeleted}">
+                            <td>{{c.ValueId}}</td>
+                            <td>{{c.ValueCode}}</td>
+                            <td>
+                                {{c.ValueName}}<span ng-show="c.HasChanges==2">*</span>
+
+                            </td>
+                            <td>{{c.Value1}}</td>
+                            <td>{{c.Value2}}</td>
+                            <td>{{c.Value3}}</td>
+                            <td>{{c.Value4}}</td>
+                            <td>
+                                <a ng-click="edit(c)" ng-show="c.HasChanges!=3 && !c.IsDeleted">Edit</a>
+                                <a ng-click="delete(c, $index)" ng-show="!c.IsDeleted">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-footer">
+                <ul class="list-inline">
+                    <li><a class="btn-link" ng-click="showlist()">Back to list</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    @*Edit Section*@
+    <div class="has-container" ng-cloak ng-show="detailview && !isprocessing && edititemcopy">
+
+        <div class="has-container">
+
+            <h2>{{edititemcopy.ValueCode}} - {{edititemcopy.ValueName}}</h2>
+
+            <div class="has-section-2">
+
+                <fieldset>
+                    <label for="edititemcopy.ValueCode">Code</label>
+                    <input type="text" name="edititemcopy.ValueCode" id="edititemcopy.ValueCode" ng-model="edititemcopy.ValueCode" required>
+                </fieldset>
+                <fieldset>
+                    <label for="edititemcopy.ValueName">Name</label>
+                    <input type="text" name="edititemcopy.ValueName" id="edititemcopy.ValueName" ng-model="edititemcopy.ValueName" required>
+                </fieldset>
+                <fieldset ng-show="detailitem.Label1!=null">
+                    <label for="edititemcopy.Label1">{{detailitem.Label1}}</label>
+                    <input type="text" name="edititemcopy.Label1" id="edititemcopy.Label1" ng-model="edititemcopy.Value1" required>
+                </fieldset>
+                <fieldset ng-show="detailitem.Label2!=null">
+                    <label for="edititemcopy.Value2">{{detailitem.Label2}}</label>
+                    <input type="text" name="edititemcopy.Value2" id="edititemcopy.Value2" ng-model="edititemcopy.Value2" required>
+                </fieldset>
+                <fieldset ng-show="detailitem.Label3!=null">
+                    <label for="edititemcopy.Value3">{{detailitem.Label3}}</label>
+                    <input type="text" name="edititemcopy.Value3" id="edititemcopy.Value3" ng-model="edititemcopy.Value3" required>
+                </fieldset>
+                <fieldset ng-show="detailitem.Label4!=null">
+                    <label for="edititemcopy.Value4">{{detailitem.Label4}}</label>
+                    <input type="text" name="edititemcopy.Value4" id="edititemcopy.Value4" ng-model="edititemcopy.Value4" required>
+                </fieldset>
+
+            </div>
+
+            <div class="panel-footer">
+                <ul class="list-inline">
+                    <li><a class="btn-link" ng-click="apply()">Save</a></li>
+                    <li><a class="btn-link" ng-click="canceledit()">Cancel</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Accounts";
+    //Layout = "~/Views/Sales/Shared/_salesLayout.cshtml";
+    Layout = null;
+
+}
+
+
+<div class="has-main-container" ng-cloak ng-controller="accountlistController">
+
+    <div class="has-loading" ng-show="isprocessing"><img src="~/CDN/Content/Images/ajax-loader.gif" alt="loading" /> Loading</div>
+      
+
+    @*Account List Section*@
+    <div class="has-container" ng-cloak ng-show="screenmanager.listview && !screenmanager.isprocessing">
+
+        <h2>@ViewBag.Title</h2>
+
+        <div class="has-section-2">
+            <label form="searchfilterslist.CurrencyName">Currency Name</label>
+            <input type="text" name="searchfilterslist.CurrencyName" id="searchfilterslist.CurrencyName" ng-model="searchfilterslist.CurrencyName" />
+        </div>
+
+        <div class="has-section-2">
+
+            <table class="table table-striped table-condensed table-hover has-list">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                <tbody>
+                    <tr ng-repeat="a in screenmanager.list" class="has-list-row" ng-click="screenmanager.showdetail(a.ID)">
+                        <td>{{a.ID}}</td>
+                        <td>{{a.Name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    @*Account Detail Section*@
+    <div class="has-container" ng-cloak ng-show="screenmanager.editview && !screenmanager.isprocessing">
+
+        <div class="has-section-2">
+            <fieldset>
+                <label for="">Account Name</label>
+                <input type="text" id="Name" name="Name" ng-model="screenmanager.edititemcopy.Name" />
+            </fieldset>
+        </div>
+
+        <div class="panel-footer">
+            <ul class="list-inline">
+                <li><a class="btn-link" ng-click="screenmanager.apply()">Apply</a></li>
+                <li><a class="btn-link" ng-click="screenmanager.canceledit()">Cancel</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

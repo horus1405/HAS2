@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HAS 2.0</title>
+    
+    @Html.Partial("_styles")
+
+</head>
+<body ng-app="app">
+
+    @Html.Partial("_headerMenu")
+
+    @RenderBody()        
+
+    @Html.Partial("_scripts")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
